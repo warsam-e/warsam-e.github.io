@@ -1,0 +1,4 @@
+{
+	"recommendations": ["astro-build.astro-vscode", "rohit-gohri.format-code-action", "biomejs.biome"],
+	"unwantedRecommendations": []
+}
