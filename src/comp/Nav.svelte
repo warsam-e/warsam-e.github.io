@@ -6,6 +6,12 @@
 			target="_blank"
 			rel="noopener noreferrer">GitHub</a
 		>
+		<a
+			class="link"
+			href="mailto:contact@warsame.me"
+			target="_blank"
+			rel="noopener noreferrer">Contact Me</a
+		>
 	</div>
 </nav>
 
@@ -19,9 +25,12 @@
 		justify-content: flex-end;
 		padding: 2em 8.9rem;
 		> .right {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
 			> a {
 				margin-left: 1em;
-				font-size: 1.4em;
+				font-size: 1.2em;
 				font-weight: 500;
 			}
 		}

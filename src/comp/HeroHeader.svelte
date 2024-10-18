@@ -28,6 +28,15 @@
 	@media only screen and (max-width: 820px) {
 		header {
 			padding: 5em 1.5em 1.5rem;
+			> .name {
+				font-size: 1.5em;
+			}
+			.title {
+				font-size: 2.5em;
+			}
+			> .desc {
+				font-size: 1em;
+			}
 		}
 	}
 </style>

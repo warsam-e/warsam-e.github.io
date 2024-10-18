@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { technologies, tech_icon } from "../lib";
+	import { technologies, logos } from "../lib";
 </script>
 
 <div class="tech-list">
@@ -9,18 +9,21 @@
 			<section>
 				<div class="title">{section}</div>
 				<div class="list">
-					{#each list as { label, icon, href, bg }}
+					{#each list as { label, icon, href, bg, invert_type }}
 						<a
 							{href}
 							class="item"
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							<img
-								src={tech_icon(icon)}
-								alt=""
+							<div
+								class="logo"
 								style="--icon-bg: rgba({bg.join(',')});"
-							/>
+								data-invert={invert_type}
+							>
+								<img src={logos[icon]} alt="" />
+							</div>
+
 							<div class="label">{label}</div>
 						</a>
 					{/each}
@@ -32,10 +35,10 @@
 
 <style lang="scss">
 	.tech-list {
-		padding: 1em 8.9rem 5rem;
+		padding: 0 8.9rem 5rem;
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		gap: 0.5rem;
 		> .title {
 			font-size: 1.5rem;
 			font-weight: 300;
@@ -43,7 +46,7 @@
 		> .sections {
 			display: flex;
 			flex-direction: column;
-			gap: 2rem;
+			gap: 1.5rem;
 
 			> section {
 				display: flex;
@@ -64,20 +67,23 @@
 						padding: 1em;
 						display: flex;
 						align-items: center;
-						gap: 0.3rem;
+						gap: 1rem;
 						background: rgba(0, 0, 0, 0.04);
 						border-radius: calc(4rem / 4.4);
 						color: inherit;
 						text-decoration: none;
 						transition: background 0.2s ease-in-out;
-						> img {
+						> .logo {
 							height: 4em;
 							width: 4em;
-							margin-right: 0.5em;
-							padding: 0.8em;
-							object-fit: contain;
 							background: var(--icon-bg);
+							padding: 0.8em;
 							border-radius: 0.9em;
+							> img {
+								height: 100%;
+								width: 100%;
+								object-fit: contain;
+							}
 						}
 						> .label {
 							font-weight: 450;
@@ -115,14 +121,28 @@
 					> .list {
 						> .item {
 							background: rgba(255, 255, 255, 0.04);
-							> img {
-								background: var(--icon-bg);
-							}
 							&:hover {
 								background: rgba(255, 255, 255, 0.08);
 							}
 							&:active {
 								background: rgba(255, 255, 255, 0.12);
+							}
+							> .logo {
+								&[data-invert="invert-both"] {
+									filter: invert(1);
+								}
+								&[data-invert="invert-bg"] {
+									filter: invert(1);
+									> img {
+										filter: invert(1);
+									}
+								}
+
+								&[data-invert="invert-logo"] {
+									> img {
+										filter: invert(1);
+									}
+								}
 							}
 						}
 					}

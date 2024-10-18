@@ -13,5 +13,6 @@ export default defineConfig({
 	outDir: 'docs',
 	build: {
 		assets: 'assets',
+		inlineStylesheets: 'always',
 	},
 });
