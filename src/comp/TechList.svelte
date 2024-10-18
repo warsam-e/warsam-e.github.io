@@ -98,6 +98,36 @@
 	@media only screen and (max-width: 820px) {
 		.tech-list {
 			padding: 1em 1.5em 5rem;
+			> .sections {
+				> section {
+					> .list {
+						grid-template-columns: 1fr;
+					}
+				}
+			}
+		}
+	}
+
+	@media (prefers-color-scheme: dark) {
+		.tech-list {
+			> .sections {
+				> section {
+					> .list {
+						> .item {
+							background: rgba(255, 255, 255, 0.04);
+							> img {
+								background: var(--icon-bg);
+							}
+							&:hover {
+								background: rgba(255, 255, 255, 0.08);
+							}
+							&:active {
+								background: rgba(255, 255, 255, 0.12);
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 </style>

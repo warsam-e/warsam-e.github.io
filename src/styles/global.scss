@@ -16,7 +16,7 @@ body {
 
 body::before {
 	content: "";
-	background-image: url(grid.svg);
+	background-image: url(/grid.svg);
 	background-repeat: repeat;
 	position: fixed;
 	inset: 0;
