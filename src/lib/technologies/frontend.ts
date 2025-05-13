@@ -1,28 +1,21 @@
-import { javascript, typescript } from './languages';
 import { make_section, make_technology } from './types';
 
-const svelte = make_technology('Svelte', {
+const sveltekit = make_technology('SvelteKit', {
 	icon: 'svelte',
-	href: 'https://svelte.dev/',
+	href: 'https://svelte.dev/docs/kit/introduction',
 	bg: [255, 99, 71, 0.15],
 });
 
-const vue = make_technology('Vue', {
-	icon: 'vue',
-	href: 'https://vuejs.org/',
-	bg: [65, 184, 131, 0.15],
+const vite = make_technology('Vite', {
+	icon: 'vite',
+	href: 'https://vite.dev/',
+	bg: [150, 127, 255, 0.15],
 });
 
-const react = make_technology('React', {
-	icon: 'react',
-	href: 'https://react.dev/',
-	bg: [97, 218, 251, 0.15],
-});
-
-const angular = make_technology('Angular', {
-	icon: 'angular',
-	href: 'https://angular.io/',
-	bg: [220, 0, 0, 0.15],
+const astro = make_technology('Astro', {
+	icon: 'astro',
+	href: 'https://astro.build/',
+	bg: [255, 99, 71, 0.15],
 });
 
 const tailwindcss = make_technology('Tailwind CSS', {
@@ -61,17 +54,4 @@ const css = make_technology('CSS', {
 	bg: [59, 130, 246, 0.15],
 });
 
-export default make_section('Frontend', [
-	svelte,
-	vue,
-	react,
-	angular,
-	typescript,
-	javascript,
-	tailwindcss,
-	bootstrap,
-	bulma,
-	sass,
-	html,
-	css,
-]);
+export default make_section('Frontend & UIs', [sveltekit, vite, astro, tailwindcss, bootstrap, bulma, sass, html, css]);

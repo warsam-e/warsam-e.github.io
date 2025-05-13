@@ -8,6 +8,7 @@ export interface Technology {
 	href: string;
 	bg: [number, number, number, number];
 	invert_type: InvertType;
+	dim_bg: boolean;
 }
 
 export interface TechnologySection {
@@ -22,7 +23,8 @@ export const make_technology = (
 		href: string;
 		bg: [number, number, number, number];
 		invert_type?: InvertType;
+		dim_bg?: boolean;
 	},
-): Technology => ({ label, ...data, invert_type: data.invert_type ?? 'none' });
+): Technology => ({ label, ...data, invert_type: data.invert_type ?? 'none', dim_bg: data.dim_bg ?? false });
 
 export const make_section = (section: string, list: Technology[]): TechnologySection => ({ section, list });

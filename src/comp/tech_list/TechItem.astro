@@ -1,0 +1,107 @@
+---
+import { logos } from "$lib";
+import type { Technology } from "$lib/technologies/types";
+
+interface Props {
+  item: Technology;
+}
+
+const { item } = Astro.props;
+
+const { label, icon, href, bg, invert_type, dim_bg } = item;
+---
+
+<a
+  {href}
+  class=`item hover_effect ${dim_bg ? ' dim_bg' : ''}`
+  data-invert={invert_type}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <div class="content">
+    <picture>
+      <source srcset={logos[icon]} />
+      <img alt="" />
+    </picture>
+
+    <div class="label">{label}</div>
+  </div>
+  <div class=`bg` style=`--bg: rgba(${bg.join(',')});`></div>
+</a>
+
+<style lang="scss">
+  .item {
+    height: 5rem;
+    padding: 0 1rem;
+    box-shadow: inset 0 0 0 1px rgba(#000, 0.05);
+    border-radius: calc(5rem / 4.4);
+    color: inherit;
+    text-decoration: none;
+    overflow: hidden;
+    position: relative;
+    > .bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--bg);
+    }
+    &.dim_bg {
+      > .bg {
+        border-radius: inherit;
+        box-shadow: inset 0 0 0 1px rgba(#000, 0.05);
+      }
+    }
+    > .content {
+      position: absolute;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      > picture {
+        // height: 2.5rem;
+        width: 2.5rem;
+        overflow: hidden;
+        border-radius: calc(2.5rem / 4.4);
+        > img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+      > .label {
+        font-weight: 450;
+      }
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .item {
+      box-shadow: inset 0 0 0 1px rgba(#fff, 0.05);
+      &.dim_bg {
+        box-shadow: inset 0 0 0 1px rgba(#fff, 0.1);
+        > .bg {
+          opacity: 0.1;
+        }
+      }
+
+      &[data-invert="invert-both"],
+      &[data-invert="invert-bg"] {
+        > .bg {
+          filter: invert(1);
+        }
+      }
+
+      &[data-invert="invert-both"],
+      &[data-invert="invert-logo"] {
+        > .content {
+          > picture {
+            filter: invert(1);
+          }
+        }
+      }
+    }
+  }
+</style>

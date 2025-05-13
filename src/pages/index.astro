@@ -1,50 +1,62 @@
 ---
-import Nav from "../comp/Nav.svelte";
-import HeroHeader from "../comp/HeroHeader.svelte";
-import TechList from "../comp/TechList.svelte";
-import "../styles/global.scss";
+import HeroHeader from "$comp/HeroHeader.astro";
+import Nav from "$comp/Nav.astro";
+import { ProjectsList } from "$comp/projects";
+import { TechList } from "$comp/tech_list";
 import { SEO } from "astro-seo";
+import "framework7-icons/css/framework7-icons.css";
+import "../styles/global.scss";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="darkreader-lock" />
-		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<meta name="generator" content={Astro.generator} />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="darkreader-lock" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
 
-		<SEO
-			title="Warsame Egeh"
-			description="Full Stack Developer, from Web technologies to mobile applications."
-		/>
+    <SEO
+      title="Warsame Egeh"
+      description="Full Stack Developer, from Web technologies to mobile applications."
+    />
 
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
-			rel="stylesheet"
-		/>
-
-		<!-- Google tag (gtag.js) -->
-		<script
-			async
-			src="https://www.googletagmanager.com/gtag/js?id=G-W72HE4JTT2"
-		></script>
-		<script type="application/javascript">
-			window.dataLayer = window.dataLayer || [];
-			function gtag() {
-				dataLayer.push(arguments);
-			}
-			gtag("js", new Date());
-
-			gtag("config", "G-W72HE4JTT2");
-		</script>
-	</head>
-	<body ontouchstart="">
-		<main>
-			<Nav />
-			<HeroHeader />
-			<TechList />
-		</main>
-	</body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body ontouchstart="">
+    <main>
+      <Nav />
+      <HeroHeader />
+      <div class="sections">
+        <section>
+          <div class="title">Projects</div>
+          <ProjectsList />
+        </section>
+        <section>
+          <div class="title">Technologies</div>
+          <TechList />
+        </section>
+      </div>
+    </main>
+  </body>
 </html>
+
+<style lang="scss">
+  .sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    > section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      > .title {
+        font-size: 2rem;
+      }
+    }
+  }
+</style>

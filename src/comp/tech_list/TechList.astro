@@ -1,0 +1,45 @@
+---
+import { technologies } from "$lib";
+import TechItrem from "./TechItem.astro";
+---
+
+<div class="tech-list">
+  {
+    technologies.map(({ section, list }) => (
+      <section>
+        <div class="title">{section}</div>
+        <div class="list">
+          {list.map((item) => (
+            <TechItrem {item} />
+          ))}
+        </div>
+      </section>
+    ))
+  }
+</div>
+
+<style lang="scss">
+  .tech-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    > section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      > .title {
+        opacity: 0.6;
+        font-weight: 300;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        padding: 0 1rem;
+      }
+      > .list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+        gap: 0.8rem;
+      }
+    }
+  }
+</style>

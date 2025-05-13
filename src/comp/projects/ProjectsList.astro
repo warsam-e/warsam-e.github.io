@@ -1,0 +1,16 @@
+---
+import { projects } from "$lib/projects";
+import ProjectCard from "./ProjectCard.astro";
+---
+
+<div class="projects">
+  {projects.map((project) => <ProjectCard {project} />)}
+</div>
+
+<style lang="scss">
+  .projects {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+</style>
