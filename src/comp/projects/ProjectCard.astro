@@ -1,5 +1,6 @@
 ---
 import type { Project, ProjectLinkType } from "$lib/projects/types";
+import ProductCardStackItem from "./ProductCardStackItem.astro";
 
 interface Props {
   project: Project;
@@ -7,13 +8,13 @@ interface Props {
 
 const { project } = Astro.props;
 
-const { label, desc, tags, links } = project;
+const { label, desc, stack, links } = project;
 
 function format_website_link(url: string) {
   if (url.startsWith("http")) return url;
-  const origin = import.meta.env.VITE_ORIGIN;
-  if (!origin) throw new Error("VITE_ORIGIN is not defined");
-  const uri = new URL(url, origin);
+  let uri = Astro.site;
+  if (!uri) throw new Error("Astro.site is not defined");
+  uri.pathname = url;
   return uri.href;
 }
 
@@ -31,9 +32,11 @@ function format_link_icon(type: ProjectLinkType) {
 <div class="project">
   <div class="content">
     <div class="meta">
-      <div class="label">{label}</div>
-      <div class="tags">
-        {tags.map((tag) => <span class="tag">{tag}</span>)}
+      <div class="heading">
+        <div class="label">{label}</div>
+        <div class="stack">
+          {stack.map((label) => <ProductCardStackItem {label} />)}
+        </div>
       </div>
       <div class="desc">{desc}</div>
     </div>
@@ -46,7 +49,9 @@ function format_link_icon(type: ProjectLinkType) {
             rel="noopener noreferrer"
             class="hover_effect"
           >
-            <i class="f7-icons">{format_link_icon(type)}</i>
+            <i class="f7-icons" data-type={type}>
+              {format_link_icon(type)}
+            </i>
           </a>
         ))
       }
@@ -55,11 +60,12 @@ function format_link_icon(type: ProjectLinkType) {
 </div>
 
 <style lang="scss">
-  .tags {
+  .stack {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 0.5rem;
-    > .tag {
+    > .item {
       height: 1.2rem;
       font-weight: 500;
       font-size: 0.7rem;
@@ -90,20 +96,20 @@ function format_link_icon(type: ProjectLinkType) {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 2rem;
       > .meta {
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
-        > .label {
-          font-size: 1.2rem;
-          font-weight: 500;
+        > .heading {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          > .label {
+            font-size: 1.2rem;
+            font-weight: 500;
+          }
         }
-        > .href {
-          color: #007aff;
-          opacity: 0.8;
-          font-size: 1rem;
-        }
-
         > .desc {
           opacity: 0.3;
           font-size: 1rem;
@@ -118,7 +124,16 @@ function format_link_icon(type: ProjectLinkType) {
           color: inherit;
           opacity: 0.8;
           > i {
-            font-size: 2rem;
+            font-size: 1.3rem;
+            &[data-type="repo"] {
+              color: #333;
+              @media (prefers-color-scheme: dark) {
+                color: #ddd;
+              }
+            }
+            &[data-type="website"] {
+              color: var(--blue);
+            }
           }
         }
       }
@@ -131,6 +146,15 @@ function format_link_icon(type: ProjectLinkType) {
         flex-direction: column;
         align-items: flex-end;
         gap: 1rem;
+        > .meta {
+          > .heading {
+            flex-direction: column;
+            align-items: flex-start;
+            > .label {
+              font-size: 1.4rem;
+            }
+          }
+        }
         > .links {
           > a {
             > i {

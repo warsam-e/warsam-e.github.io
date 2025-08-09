@@ -36,8 +36,8 @@ const bulma = make_technology('Bulma', {
 	bg: [0, 209, 178, 0.15],
 });
 
-const sass = make_technology('SASS', {
-	icon: 'sass',
+const scss = make_technology('SCSS', {
+	icon: 'scss',
 	href: 'https://sass-lang.com/',
 	bg: [199, 93, 190, 0.15],
 });
@@ -54,4 +54,4 @@ const css = make_technology('CSS', {
 	bg: [59, 130, 246, 0.15],
 });
 
-export default make_section('Frontend & UIs', [sveltekit, vite, astro, tailwindcss, bootstrap, bulma, sass, html, css]);
+export default make_section('Frontend & UIs', [sveltekit, vite, astro, tailwindcss, bootstrap, bulma, scss, html, css]);

@@ -20,7 +20,7 @@ export const logos = {
 	react: 'logos/react.svg',
 	redis: 'logos/redis.svg',
 	rust: 'logos/rust.svg',
-	sass: 'logos/sass.svg',
+	scss: 'logos/scss.svg',
 	slack: 'logos/slack.svg',
 	svelte: 'logos/svelte.svg',
 	swift: 'logos/swift.svg',

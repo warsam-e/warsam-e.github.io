@@ -1,5 +1,6 @@
 {
 	"name": "site",
+	"private": true,
 	"type": "module",
 	"version": "0.0.1",
 	"scripts": {
@@ -11,11 +12,14 @@
 	},
 	"dependencies": {
 		"@astrojs/check": "0.9.4",
-		"@biomejs/biome": "1.9.4",
-		"astro": "5.7.12",
+		"@biomejs/biome": "2.1.4",
+		"astro": "5.12.9",
 		"astro-seo": "0.8.4",
 		"framework7-icons": "5.0.5",
-		"sass-embedded": "1.88.0",
-		"typescript": "5.8.3"
-	}
+		"sass-embedded": "1.90.0",
+		"typescript": "5.9.2"
+	},
+	"trustedDependencies": [
+		"@biomejs/biome"
+	]
 }

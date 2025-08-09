@@ -1,3 +1,5 @@
+import type { TechnologyLabel } from '$lib/technologies';
+
 export type ProjectLinkType = 'repo' | 'website';
 
 export type ProjectLink = {
@@ -8,7 +10,7 @@ export type ProjectLink = {
 export interface Project {
 	label: string;
 	desc: string;
-	tags: string[];
+	stack: Array<TechnologyLabel>;
 	links: ProjectLink[];
 }
 
@@ -16,7 +18,7 @@ export const make_project = (
 	label: string,
 	data: {
 		desc: string;
-		tags: string[];
+		stack: Array<TechnologyLabel>;
 		links: ProjectLink[];
 	},
 ): Project => ({ label, ...data });

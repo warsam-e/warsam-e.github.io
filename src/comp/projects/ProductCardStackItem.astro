@@ -1,23 +1,19 @@
 ---
 import { logos } from "$lib";
-import type { Technology } from "$lib/technologies/types";
+import { technology, type TechnologyLabel } from "$lib/technologies";
 
 interface Props {
-  item: Technology<string>;
+  label: TechnologyLabel;
 }
 
-const { item } = Astro.props;
-
-const { label, icon, href, bg, invert_type, dim_bg } = item;
+const tech = technology(Astro.props.label);
+const { label, icon, bg, invert_type, dim_bg } = tech;
 ---
 
-<a
-  id={label}
-  {href}
-  class=`item hover_effect ${dim_bg ? ' dim_bg' : ''}`
+<div
+  onclick=`document.getElementById('${tech.label}')?.scrollIntoView({ behavior: 'smooth' })`
+  class=`stack_item hover_effect ${dim_bg ? ' dim_bg' : ''}`
   data-invert={invert_type}
-  target="_blank"
-  rel="noopener noreferrer"
 >
   <div class="content">
     <picture>
@@ -27,19 +23,22 @@ const { label, icon, href, bg, invert_type, dim_bg } = item;
 
     <div class="label">{label}</div>
   </div>
+
   <div class=`bg` style=`--bg: rgba(${bg.join(',')});`></div>
-</a>
+</div>
 
 <style lang="scss">
-  .item {
-    height: 4rem;
-    padding: 0 1rem;
-    box-shadow: inset 0 0 0 1px rgba(#000, 0.05);
-    border-radius: calc(4rem / 4.4);
+  .stack_item {
     color: inherit;
-    text-decoration: none;
-    overflow: hidden;
+    height: 1.6rem;
+    font-weight: 500;
+    padding: 0 0.6rem;
+    border-radius: calc(1.6rem / 4.4);
+    box-shadow: inset 0 0 0 1px rgba(#000, 0.05);
+    display: flex;
+    align-items: center;
     position: relative;
+    overflow: hidden;
     > .bg {
       position: absolute;
       top: 0;
@@ -54,17 +53,16 @@ const { label, icon, href, bg, invert_type, dim_bg } = item;
         box-shadow: inset 0 0 0 1px rgba(#000, 0.05);
       }
     }
+
     > .content {
-      position: absolute;
-      z-index: 1;
       height: 100%;
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 0.4rem;
       > picture {
-        height: 1.6rem;
+        height: 0.8rem;
         overflow: hidden;
-        border-radius: calc(1.6rem / 4.4);
+        border-radius: calc(0.8rem / 4.4);
         > img {
           height: 100%;
           width: 100%;
@@ -72,34 +70,26 @@ const { label, icon, href, bg, invert_type, dim_bg } = item;
         }
       }
       > .label {
+        font-size: 0.6rem;
         font-weight: 600;
       }
     }
   }
 
   @media (prefers-color-scheme: dark) {
-    .item {
+    .stack_item {
       box-shadow: inset 0 0 0 1px rgba(#fff, 0.05);
+
       &.dim_bg {
         box-shadow: inset 0 0 0 1px rgba(#fff, 0.1);
         > .bg {
           opacity: 0.1;
         }
       }
-
       &[data-invert="invert-both"],
       &[data-invert="invert-bg"] {
         > .bg {
           filter: invert(1);
-        }
-      }
-
-      &[data-invert="invert-both"],
-      &[data-invert="invert-logo"] {
-        > .content {
-          > picture {
-            filter: invert(1);
-          }
         }
       }
     }
