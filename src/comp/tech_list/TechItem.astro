@@ -1,5 +1,5 @@
 ---
-import { logos } from "$lib";
+import Logo from "$comp/Logo.astro";
 import type { Technology } from "$lib/technologies/types";
 
 interface Props {
@@ -8,30 +8,29 @@ interface Props {
 
 const { item } = Astro.props;
 
-const { label, icon, href, bg, invert_type, dim_bg } = item;
+const { label, icon, href, vibrant, invert_bg } = item;
+console.log(vibrant);
 ---
 
 <a
   id={label}
   {href}
-  class=`item hover_effect ${dim_bg ? ' dim_bg' : ''}`
-  data-invert={invert_type}
+  class=`item hover_effect${invert_bg ? ' invert_bg' : ''}`
   target="_blank"
   rel="noopener noreferrer"
 >
   <div class="content">
-    <picture>
-      <source srcset={logos[icon]} />
-      <img alt="" />
-    </picture>
+    <Logo name={icon} size="1.6rem" />
 
     <div class="label">{label}</div>
   </div>
-  <div class=`bg` style=`--bg: rgba(${bg.join(',')});`></div>
+  <div class=`bg` style=`--vibrant: ${vibrant};`></div>
 </a>
 
 <style lang="scss">
   .item {
+    min-width: 0;
+    width: 100%;
     height: 4rem;
     padding: 0 1rem;
     box-shadow: inset 0 0 0 1px rgba(#000, 0.05);
@@ -46,13 +45,8 @@ const { label, icon, href, bg, invert_type, dim_bg } = item;
       left: 0;
       right: 0;
       bottom: 0;
-      background: var(--bg);
-    }
-    &.dim_bg {
-      > .bg {
-        border-radius: inherit;
-        box-shadow: inset 0 0 0 1px rgba(#000, 0.05);
-      }
+      background: var(--vibrant);
+      opacity: 0.2;
     }
     > .content {
       position: absolute;
@@ -61,18 +55,10 @@ const { label, icon, href, bg, invert_type, dim_bg } = item;
       display: flex;
       align-items: center;
       gap: 0.8rem;
-      > picture {
-        height: 1.6rem;
-        overflow: hidden;
-        border-radius: calc(1.6rem / 4.4);
-        > img {
-          height: 100%;
-          width: 100%;
-          object-fit: cover;
-        }
-      }
+
       > .label {
-        font-weight: 600;
+        opacity: 0.7;
+        font-weight: 700;
       }
     }
   }
@@ -80,26 +66,10 @@ const { label, icon, href, bg, invert_type, dim_bg } = item;
   @media (prefers-color-scheme: dark) {
     .item {
       box-shadow: inset 0 0 0 1px rgba(#fff, 0.05);
-      &.dim_bg {
-        box-shadow: inset 0 0 0 1px rgba(#fff, 0.1);
-        > .bg {
-          opacity: 0.1;
-        }
-      }
 
-      &[data-invert="invert-both"],
-      &[data-invert="invert-bg"] {
+      &.invert_bg {
         > .bg {
           filter: invert(1);
-        }
-      }
-
-      &[data-invert="invert-both"],
-      &[data-invert="invert-logo"] {
-        > .content {
-          > picture {
-            filter: invert(1);
-          }
         }
       }
     }

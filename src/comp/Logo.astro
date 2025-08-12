@@ -1,0 +1,31 @@
+---
+import { logos } from "$lib";
+
+interface Props {
+  size: `${number}rem`;
+  name: keyof typeof logos;
+}
+
+const { name, size } = Astro.props;
+
+let srcset = logos[name];
+---
+
+<picture style={`--size: ${size}`}>
+  <source {srcset} />
+  <img alt="" />
+</picture>
+
+<style lang="scss">
+  picture {
+    width: var(--size);
+    height: var(--size);
+    border-radius: calc(var(--size) / 4.4);
+    overflow: hidden;
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+</style>

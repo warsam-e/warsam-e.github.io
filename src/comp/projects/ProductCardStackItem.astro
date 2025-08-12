@@ -1,5 +1,5 @@
 ---
-import { logos } from "$lib";
+import Logo from "$comp/Logo.astro";
 import { technology, type TechnologyLabel } from "$lib/technologies";
 
 interface Props {
@@ -7,24 +7,19 @@ interface Props {
 }
 
 const tech = technology(Astro.props.label);
-const { label, icon, bg, invert_type, dim_bg } = tech;
+const { label, icon, vibrant, invert_bg } = tech;
 ---
 
 <div
+  class=`stack_item hover_effect ${invert_bg ? ' invert_bg' : ''}`
   onclick=`document.getElementById('${tech.label}')?.scrollIntoView({ behavior: 'smooth' })`
-  class=`stack_item hover_effect ${dim_bg ? ' dim_bg' : ''}`
-  data-invert={invert_type}
 >
   <div class="content">
-    <picture>
-      <source srcset={logos[icon]} />
-      <img alt="" />
-    </picture>
+    <Logo name={icon} size="0.8rem" />
 
     <div class="label">{label}</div>
   </div>
-
-  <div class=`bg` style=`--bg: rgba(${bg.join(',')});`></div>
+  <div class=`bg` style=`--vibrant: ${vibrant};`></div>
 </div>
 
 <style lang="scss">
@@ -45,7 +40,8 @@ const { label, icon, bg, invert_type, dim_bg } = tech;
       left: 0;
       right: 0;
       bottom: 0;
-      background: var(--bg);
+      background: var(--vibrant);
+      opacity: 0.2;
     }
     &.dim_bg {
       > .bg {
@@ -55,23 +51,16 @@ const { label, icon, bg, invert_type, dim_bg } = tech;
     }
 
     > .content {
+      z-index: 1;
       height: 100%;
       display: flex;
       align-items: center;
       gap: 0.4rem;
-      > picture {
-        height: 0.8rem;
-        overflow: hidden;
-        border-radius: calc(0.8rem / 4.4);
-        > img {
-          height: 100%;
-          width: 100%;
-          object-fit: cover;
-        }
-      }
+
       > .label {
+        opacity: 0.7;
         font-size: 0.6rem;
-        font-weight: 600;
+        font-weight: 700;
       }
     }
   }

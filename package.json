@@ -16,7 +16,9 @@
 		"astro": "5.12.9",
 		"astro-seo": "0.8.4",
 		"framework7-icons": "5.0.5",
+		"node-vibrant": "4.0.3",
 		"sass-embedded": "1.90.0",
+		"sharp": "^0.34.3",
 		"typescript": "5.9.2"
 	},
 	"trustedDependencies": [

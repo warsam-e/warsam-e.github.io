@@ -30,32 +30,30 @@ function format_link_icon(type: ProjectLinkType) {
 ---
 
 <div class="project">
-  <div class="content">
-    <div class="meta">
-      <div class="heading">
-        <div class="label">{label}</div>
-        <div class="stack">
-          {stack.map((label) => <ProductCardStackItem {label} />)}
-        </div>
+  <div class="project_links">
+    {
+      links.map(({ type, href }) => (
+        <a
+          href={format_href(type, href)}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover_effect"
+        >
+          <i class="f7-icons" data-type={type}>
+            {format_link_icon(type)}
+          </i>
+        </a>
+      ))
+    }
+  </div>
+  <div class="meta">
+    <div class="heading">
+      <div class="label">{label}</div>
+      <div class="stack">
+        {stack.map((label) => <ProductCardStackItem {label} />)}
       </div>
-      <div class="desc">{desc}</div>
     </div>
-    <div class="links">
-      {
-        links.map(({ type, href }) => (
-          <a
-            href={format_href(type, href)}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="hover_effect"
-          >
-            <i class="f7-icons" data-type={type}>
-              {format_link_icon(type)}
-            </i>
-          </a>
-        ))
-      }
-    </div>
+    <div class="desc">{desc}</div>
   </div>
 </div>
 
@@ -80,62 +78,60 @@ function format_link_icon(type: ProjectLinkType) {
     }
   }
 
-  .project {
-    color: inherit;
-    text-decoration: none;
-
-    gap: 0.8rem;
-    &:not(:last-child) {
-      border-bottom: 1px solid rgba(#000, 0.05);
-      @media (prefers-color-scheme: dark) {
-        border-color: rgba(#fff, 0.05);
+  .project_links {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    > a {
+      color: inherit;
+      opacity: 0.8;
+      > i {
+        font-size: 1.3rem;
+        &[data-type="repo"] {
+          color: #333;
+          @media (prefers-color-scheme: dark) {
+            color: #ddd;
+          }
+        }
+        &[data-type="website"] {
+          color: var(--blue);
+        }
       }
     }
-    > .content {
-      padding: 0 0 1rem;
+  }
+
+  .project {
+    min-width: 0;
+    width: 100%;
+    color: inherit;
+    text-decoration: none;
+    padding: 1.2rem;
+    border-radius: 1rem;
+    position: relative;
+    box-shadow: inset 0 0 0 1px rgba(#000, 0.1);
+    @media (prefers-color-scheme: dark) {
+      box-shadow: inset 0 0 0 1px rgba(#fff, 0.1);
+    }
+    > .meta {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-      > .meta {
+      flex-direction: column;
+      gap: 0.5rem;
+      > .heading {
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
-        > .heading {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.5rem;
-          > .label {
-            font-size: 1.2rem;
-            font-weight: 500;
-          }
-        }
-        > .desc {
-          opacity: 0.3;
-          font-size: 1rem;
+        > .label {
+          font-size: 1.2rem;
           font-weight: 500;
         }
       }
-      > .links {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        > a {
-          color: inherit;
-          opacity: 0.8;
-          > i {
-            font-size: 1.3rem;
-            &[data-type="repo"] {
-              color: #333;
-              @media (prefers-color-scheme: dark) {
-                color: #ddd;
-              }
-            }
-            &[data-type="website"] {
-              color: var(--blue);
-            }
-          }
-        }
+      > .desc {
+        opacity: 0.4;
+        font-size: 0.8rem;
+        font-weight: 500;
       }
     }
   }

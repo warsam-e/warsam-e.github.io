@@ -3,7 +3,7 @@ import frontend from './frontend';
 import languages from './languages';
 import tools from './tools';
 
-export const technologies = [languages, backend, frontend, tools];
+export const technologies = await Promise.all([languages, backend, frontend, tools]);
 
 const all = technologies.flatMap((section) =>
 	section.list.map((t) => ({

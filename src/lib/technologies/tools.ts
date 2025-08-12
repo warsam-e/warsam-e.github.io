@@ -1,40 +1,44 @@
 import { make_section, make_technology } from './types';
 
+const xcode = make_technology('Xcode', {
+	icon: 'xcode',
+	href: 'https://developer.apple.com/xcode/',
+});
+
 const vscode = make_technology('VSCode', {
 	icon: 'vscode',
 	href: 'https://code.visualstudio.com/',
-	bg: [0, 122, 204, 0.2],
+});
+
+const android_studio = make_technology('Android Studio', {
+	icon: 'android_studio',
+	href: 'https://developer.android.com/studio',
+});
+
+const datagrip = make_technology('DataGrip', {
+	icon: 'datagrip',
+	href: 'https://www.jetbrains.com/datagrip/',
 });
 
 const git = make_technology('Git', {
 	icon: 'git',
 	href: 'https://git-scm.com/',
-	bg: [255, 99, 71, 0.15],
 });
 
 const github = make_technology('GitHub', {
 	icon: 'github',
 	href: 'https://github.com',
-	bg: [36, 41, 46, 0.1],
-	invert_type: 'invert-both',
-});
-
-const trello = make_technology('Trello', {
-	icon: 'trello',
-	href: 'https://trello.com/',
-	bg: [0, 121, 191, 0.2],
+	invert_bg: true,
 });
 
 const figma = make_technology('Figma', {
 	icon: 'figma',
 	href: 'https://www.figma.com/',
-	bg: [242, 78, 30, 0.15],
 });
 
-const slack = make_technology('Slack', {
-	icon: 'slack',
-	href: 'https://slack.com/',
-	bg: [74, 21, 75, 0.25],
+const sketch = make_technology('Sketch', {
+	icon: 'sketch',
+	href: 'https://www.sketch.com/',
 });
 
-export default make_section('Tools & Workflow', [vscode, git, github, trello, figma, slack]);
+export default make_section('Tools & Workflow', [xcode, vscode, android_studio, datagrip, git, github, figma, sketch]);
