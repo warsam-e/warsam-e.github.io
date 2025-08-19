@@ -15,10 +15,23 @@ const dart = make_technology('Dart', {
 	href: 'https://dart.dev/',
 });
 
+const go = make_technology('Go', {
+	icon: 'go',
+	custom_hex: '#007d9c',
+	href: 'https://go.dev/',
+});
+
 const rust = make_technology('Rust', {
 	icon: 'rust',
+	custom_hex: '#000000',
 	href: 'https://www.rust-lang.org/',
 	invert_bg: true,
+});
+
+const php = make_technology('PHP', {
+	icon: 'php',
+	custom_hex: '#4F5B93',
+	href: 'https://www.php.net/',
 });
 
 const swift = make_technology('Swift', {
@@ -31,4 +44,4 @@ const python = make_technology('Python', {
 	href: 'https://www.python.org/',
 });
 
-export default make_section('Languages & Frameworks', [typescript, javascript, dart, rust, swift, python]);
+export default make_section('Languages & Frameworks', [typescript, javascript, dart, go, rust, php, swift, python]);

@@ -30,6 +30,21 @@ const vue = make_technology('Vue', {
 	href: 'https://vuejs.org/',
 });
 
+const webpack = make_technology('Webpack', {
+	icon: 'webpack',
+	href: 'https://webpack.js.org/',
+});
+
+const parcel = make_technology('Parcel', {
+	icon: 'parcel',
+	href: 'https://parceljs.org/',
+});
+
+const esbuild = make_technology('esbuild', {
+	icon: 'esbuild',
+	href: 'https://esbuild.github.io/',
+});
+
 const tailwindcss = make_technology('Tailwind CSS', {
 	icon: 'tailwindcss',
 	href: 'https://tailwindcss.com/',
@@ -67,6 +82,9 @@ export default make_section('Frontend & UIs', [
 	react,
 	flutter,
 	vue,
+	webpack,
+	parcel,
+	esbuild,
 	tailwindcss,
 	bootstrap,
 	bulma,

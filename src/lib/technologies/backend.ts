@@ -20,6 +20,17 @@ const postgres = make_technology('PostgreSQL', {
 	href: 'https://www.postgresql.org/',
 });
 
+const mysql = make_technology('MySQL', {
+	icon: 'mysql',
+	custom_hex: '#0074a3',
+	href: 'https://www.mysql.com/',
+});
+
+const mariadb = make_technology('MariaDB', {
+	icon: 'mariadb',
+	href: 'https://mariadb.org/',
+});
+
 const mongodb = make_technology('MongoDB', {
 	icon: 'mongodb',
 	href: 'https://www.mongodb.com/',
@@ -45,14 +56,22 @@ const docker = make_technology('Docker', {
 	href: 'https://www.docker.com/',
 });
 
+const github_actions = make_technology('GitHub Actions', {
+	icon: 'github',
+	href: 'https://github.com/features/actions',
+});
+
 export default make_section('Backend & DevOps', [
 	nodejs,
 	expressjs,
 	bun,
 	elysiajs,
 	postgres,
+	mysql,
+	mariadb,
 	mongodb,
 	redis,
 	nginx,
 	docker,
+	github_actions,
 ]);

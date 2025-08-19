@@ -18,13 +18,14 @@ export const make_technology = async <Label extends string>(
 	label: Label,
 	data: {
 		icon: keyof typeof logos;
+		custom_hex?: string;
 		href: string;
 		invert_bg?: boolean;
 	},
 ): Promise<Technology<Label>> => ({
 	label,
 	...data,
-	vibrant: await get_vibrant(data.icon),
+	vibrant: data.custom_hex ?? (await get_vibrant(data.icon)),
 	invert_bg: data.invert_bg ?? false,
 });
 

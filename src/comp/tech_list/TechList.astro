@@ -39,6 +39,10 @@ import TechItrem from "./TechItem.astro";
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
         gap: 0.8rem;
+        @media only screen and (max-width: 1024px) {
+          grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+          gap: 0.5rem;
+        }
       }
     }
   }
