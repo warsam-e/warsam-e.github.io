@@ -23,12 +23,12 @@ const make_social_link = ({
 export const social_links: SocialLink[] = [
 	make_social_link({
 		logo: 'github',
-		name: 'GitHub',
+		name: '@warsam-e',
 		link: 'https://github.com/warsam-e',
 	}),
 	make_social_link({
 		logo: 'email',
-		name: 'Email',
+		name: 'Email Me',
 		link: 'mailto:contact@warsame.me',
 	}),
 ];

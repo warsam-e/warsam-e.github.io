@@ -11,36 +11,23 @@ const { item } = Astro.props;
 
 <a
   href={item.link}
-  class=`hover_effect social_item bg-${item.logo}`
+  class=`hover_effect social_item`
   target="_blank"
   rel="noopener noreferrer"
 >
-  <Logo name={item.logo} size="1.5rem" />
   <span>{item.name}</span>
+  <Logo name={item.logo} size="1rem" />
 </a>
 
 <style lang="scss">
   .social_item {
     color: inherit;
-    flex: 1 1 0;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 0.8rem;
-    height: 2.5rem;
-    padding: 0 0.5rem;
     border-radius: calc(3rem / 4.4);
     > span {
-      font-weight: 600;
-    }
-
-    &.bg-github {
-      background: rgba(36, 41, 46, 0.5);
-      box-shadow: inset 0 0 0 1px rgba(36, 41, 46, 1);
-    }
-    &.bg-email {
-      background: rgba(0, 113, 227, 0.8);
-      box-shadow: inset 0 0 0 1px rgba(0, 113, 227, 1);
+      font-weight: 500;
     }
   }
 </style>

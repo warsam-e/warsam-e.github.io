@@ -6,13 +6,18 @@ export const projects = [
 		stack: ['Swift'],
 		links: [{ type: 'repo', href: 'habi' }],
 	}),
+	make_project('bun.db', {
+		desc: 'Persistent key-value database for Bun, inspired by quick.db. Designed for simplicity and rapid prototyping.',
+		stack: ['TypeScript'],
+		links: [{ type: 'npm', href: 'bun.db' }],
+	}),
 	make_project('@warsam-e/rift', {
-		desc: 'A lightweight postgres library for TypeScript',
+		desc: 'Type-safe PostgreSQL client for TypeScript. Offers a simple and lightweight API for querying and managing databases.',
 		stack: ['TypeScript'],
 		links: [{ type: 'npm', href: '@warsam-e/rift' }],
 	}),
 	make_project('@warsam-e/stash', {
-		desc: 'A simple and flexible caching library for JavaScript and TypeScript',
+		desc: 'Simple and flexible caching library for JavaScript and TypeScript',
 		stack: ['TypeScript'],
 		links: [{ type: 'npm', href: '@warsam-e/stash' }],
 	}),
@@ -38,7 +43,7 @@ export const projects = [
 		],
 	}),
 	make_project('countdown', {
-		desc: 'A countdown timer app that creates timers from natural language input (e.g., “3 hours from now” or “next Friday at 5pm”).',
+		desc: 'Lets users create timers from natural language input (e.g., “3 hours from now” or “next Friday at 5pm”).',
 		stack: ['Svelte', 'TypeScript', 'SCSS'],
 		links: [
 			{ type: 'repo', href: 'countdown' },
