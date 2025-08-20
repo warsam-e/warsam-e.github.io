@@ -1,6 +1,6 @@
 import type { TechnologyLabel } from '$lib/technologies';
 
-export type ProjectLinkType = 'repo' | 'website';
+export type ProjectLinkType = 'repo' | 'website' | 'npm';
 
 export type ProjectLink = {
 	type: ProjectLinkType;

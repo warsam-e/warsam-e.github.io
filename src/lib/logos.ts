@@ -26,6 +26,7 @@ export const logos = {
 	mysql: logo_path('mysql'),
 	nginx: logo_path('nginx'),
 	nodejs: logo_path('nodejs'),
+	npm: logo_path('npm'),
 	parcel: logo_path('parcel'),
 	php: logo_path('php'),
 	postgresql: logo_path('postgresql'),

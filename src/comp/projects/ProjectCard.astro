@@ -1,4 +1,5 @@
 ---
+import Logo from "$comp/Logo.astro";
 import type { Project, ProjectLinkType } from "$lib/projects/types";
 import ProductCardStackItem from "./ProductCardStackItem.astro";
 
@@ -39,9 +40,13 @@ function format_link_icon(type: ProjectLinkType) {
           rel="noopener noreferrer"
           class="hover_effect"
         >
-          <i class="f7-icons" data-type={type}>
-            {format_link_icon(type)}
-          </i>
+          {type === "npm" ? (
+            <Logo name="npm" size="1.2rem" />
+          ) : (
+            <i class="f7-icons" data-type={type}>
+              {format_link_icon(type)}
+            </i>
+          )}
         </a>
       ))
     }

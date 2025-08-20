@@ -8,10 +8,17 @@ import ProjectCard from "./ProjectCard.astro";
 </div>
 
 <style lang="scss">
-  .projects {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-    gap: 0.5rem;
-    align-items: start;
+  :global(.projects) {
+    column-width: 18rem;
+    column-gap: 0.8rem;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  :global(.projects > *) {
+    break-inside: avoid;
+    margin-bottom: 0.8rem;
+    width: 100%;
+    display: block;
   }
 </style>

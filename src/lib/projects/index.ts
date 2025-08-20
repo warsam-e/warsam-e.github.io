@@ -6,6 +6,16 @@ export const projects = [
 		stack: ['Swift'],
 		links: [{ type: 'repo', href: 'habi' }],
 	}),
+	make_project('@warsam-e/rift', {
+		desc: 'A lightweight postgres library for TypeScript',
+		stack: ['TypeScript'],
+		links: [{ type: 'npm', href: '@warsam-e/rift' }],
+	}),
+	make_project('@warsam-e/stash', {
+		desc: 'A simple and flexible caching library for JavaScript and TypeScript',
+		stack: ['TypeScript'],
+		links: [{ type: 'npm', href: '@warsam-e/stash' }],
+	}),
 	make_project('Kaiga', {
 		desc: 'An iOS photo management app that lets users quickly sort their camera roll by tapping an album or deleting unwanted images instantly.',
 		stack: ['Flutter', 'Dart'],
