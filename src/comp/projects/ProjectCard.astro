@@ -20,6 +20,7 @@ function format_website_link(url: string) {
 }
 
 function format_href(type: ProjectLinkType, href: string) {
+  if (type === "npm") return `https://npmjs.com/package/${href}`;
   if (type === "repo") return `https://github.com/warsam-e/${href}`;
   return format_website_link(href);
 }
