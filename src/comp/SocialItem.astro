@@ -1,6 +1,5 @@
 ---
 import type { SocialLink } from "$lib/socials";
-import Logo from "./Logo.astro";
 
 interface Props {
   item: SocialLink;
@@ -16,7 +15,7 @@ const { item } = Astro.props;
   rel="noopener noreferrer"
 >
   <span>{item.name}</span>
-  <Logo name={item.logo} size="1rem" />
+  <i class="f7-icons">{item.logo}</i>
 </a>
 
 <style lang="scss">
@@ -28,6 +27,9 @@ const { item } = Astro.props;
     border-radius: calc(3rem / 4.4);
     > span {
       font-weight: 500;
+    }
+    > i {
+      font-size: 1rem;
     }
   }
 </style>

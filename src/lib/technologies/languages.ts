@@ -44,4 +44,4 @@ const python = make_technology('Python', {
 	href: 'https://www.python.org/',
 });
 
-export default make_section('Languages & Frameworks', [typescript, javascript, dart, go, rust, php, swift, python]);
+export default make_section('Programming Languages', [typescript, javascript, dart, go, rust, php, swift, python]);
