@@ -1,6 +1,14 @@
 import { make_project } from './types';
 
 export const projects = [
+	make_project('MDViewer', {
+		desc: 'Simple Markdown Viewer with GitHub-flavoured styling',
+		stack: ['PHP', 'JavaScript'],
+		links: [
+			{ type: 'repo', href: 'mdviewer' },
+			{ type: 'lab', href: '/mdviewer' },
+		],
+	}),
 	make_project('NPM Pulse', {
 		desc: 'Live dashboard for watching new and updated packages as they roll in on the NPM registry.',
 		stack: ['ElysiaJS', 'TypeScript', 'Svelte'],

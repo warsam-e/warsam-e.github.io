@@ -30,7 +30,7 @@ const rust = make_technology('Rust', {
 
 const php = make_technology('PHP', {
 	icon: 'php',
-	custom_hex: '#4F5B93',
+	// custom_hex: '#4F5B93',
 	href: 'https://www.php.net/',
 });
 

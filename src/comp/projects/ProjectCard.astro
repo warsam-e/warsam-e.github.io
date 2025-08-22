@@ -11,10 +11,11 @@ const { project } = Astro.props;
 
 const { label, desc, stack, links } = project;
 
-function format_website_link(url: string) {
+function format_website_link(url: string, lab = false) {
   if (url.startsWith("http")) return url;
   let uri = Astro.site;
   if (!uri) throw new Error("Astro.site is not defined");
+  if (lab) uri.hostname = `lab.${uri.hostname}`;
   uri.pathname = url;
   return uri.href;
 }
@@ -22,7 +23,7 @@ function format_website_link(url: string) {
 function format_href(type: ProjectLinkType, href: string) {
   if (type === "npm") return `https://npmjs.com/package/${href}`;
   if (type === "repo") return `https://github.com/warsam-e/${href}`;
-  return format_website_link(href);
+  return format_website_link(href, type === "lab");
 }
 
 function format_link_icon(type: ProjectLinkType) {
@@ -89,7 +90,8 @@ function format_link_icon(type: ProjectLinkType) {
             color: #ddd;
           }
         }
-        &[data-type="website"] {
+        &[data-type="website"],
+        &[data-type="lab"] {
           color: var(--blue);
         }
       }
