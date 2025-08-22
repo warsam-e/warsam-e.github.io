@@ -1,6 +1,22 @@
 import { make_project } from './types';
 
 export const projects = [
+	make_project('NPM Pulse', {
+		desc: 'Live dashboard for watching new and updated packages as they roll in on the NPM registry.',
+		stack: ['ElysiaJS', 'TypeScript', 'Svelte'],
+		links: [
+			{ type: 'repo', href: 'pulse' },
+			{ type: 'website', href: '/pulse' },
+		],
+	}),
+	make_project('@warsam-e/npm', {
+		desc: 'Get information about a package or user from the NPM registry.',
+		stack: ['TypeScript'],
+		links: [
+			{ type: 'repo', href: 'npm' },
+			{ type: 'npm', href: '@warsam-e/npm' },
+		],
+	}),
 	make_project('aniql', {
 		desc: 'A TypeScript library for interacting with the AniList API.',
 		stack: ['TypeScript'],
