@@ -11,12 +11,12 @@ const { project } = Astro.props;
 
 const { label, desc, stack, links } = project;
 
-function format_website_link(url: string, lab = false) {
-  if (url.startsWith("http")) return url;
-  let uri = Astro.site;
+function format_website_link(path: string, lab = false) {
+  if (path.startsWith("http")) return path;
+  let uri = Astro.site ? new URL(Astro.site) : null;
   if (!uri) throw new Error("Astro.site is not defined");
   if (lab) uri.hostname = `lab.${uri.hostname}`;
-  uri.pathname = url;
+  uri.pathname = path;
   return uri.href;
 }
 
