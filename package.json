@@ -8,20 +8,24 @@
 		"start": "astro dev",
 		"build": "astro check && astro build",
 		"preview": "astro preview",
-		"astro": "astro"
+		"astro": "astro",
+		"check": "bunx @biomejs/biome check"
 	},
 	"dependencies": {
-		"@astrojs/check": "0.9.4",
-		"@biomejs/biome": "2.2.0",
-		"astro": "5.13.2",
+		"@astrojs/check": "0.9.5",
+		"@biomejs/biome": "2.3.5",
+		"astro": "5.15.8",
 		"astro-seo": "0.8.4",
 		"framework7-icons": "5.0.5",
 		"node-vibrant": "4.0.3",
-		"sass-embedded": "1.90.0",
-		"sharp": "^0.34.3",
-		"typescript": "5.9.2"
+		"sass-embedded": "1.93.3",
+		"sharp": "0.34.5",
+		"typescript": "5.9.3"
 	},
 	"trustedDependencies": [
-		"@biomejs/biome"
+		"@biomejs/biome",
+		"@parcel/watcher",
+		"esbuild",
+		"sharp"
 	]
 }

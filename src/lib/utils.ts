@@ -1,5 +1,5 @@
-import { Vibrant } from 'node-vibrant/node';
 import { join } from 'node:path';
+import { Vibrant } from 'node-vibrant/node';
 import sharp from 'sharp';
 import { logos } from './logos';
 

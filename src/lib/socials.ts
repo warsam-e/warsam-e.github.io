@@ -1,4 +1,3 @@
-
 export interface SocialLink {
 	logo: string;
 	name: string;
